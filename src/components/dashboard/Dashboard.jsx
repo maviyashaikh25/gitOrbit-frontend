@@ -17,7 +17,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchRepositories = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/repo/all");
+                const res = await axios.get("https://git-orbit-backend.vercel.app/repo/all");
                 setRepositories(res.data);
                 setSuggestedRepositories(res.data);
             } catch (err) {
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
     const handleStar = async (repoId) => {
         try {
-            await axios.put(`http://localhost:3000/repo/star/${repoId}`, {
+            await axios.put(`https://git-orbit-backend.vercel.app/repo/star/${repoId}`, {
                 userID: currentUser
             });
             // Optimistic Update
@@ -81,9 +81,9 @@ const Dashboard = () => {
              const isFollowing = targetRepo?.owner?.followers?.some(id => id.toString() === currentUser);
 
             if (isFollowing) {
-                await axios.post(`http://localhost:3000/unfollow/${ownerId}`, { currentUserID: currentUser });
+                await axios.post(`https://git-orbit-backend.vercel.app/unfollow/${ownerId}`, { currentUserID: currentUser });
             } else {
-                await axios.post(`http://localhost:3000/follow/${ownerId}`, { currentUserID: currentUser });
+                await axios.post(`https://git-orbit-backend.vercel.app/follow/${ownerId}`, { currentUserID: currentUser });
             }
 
             // Update all repos with this owner

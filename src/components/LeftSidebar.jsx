@@ -14,7 +14,7 @@ const LeftSidebar = () => {
       try {
         if (currentUser) {
           const response = await axios.get(
-            `http://localhost:3000/repo/user/${currentUser}`
+            `https://git-orbit-backend.vercel.app/repo/user/${currentUser}`
           );
           if (response.data.repositories) {
             setRepos(response.data.repositories);
