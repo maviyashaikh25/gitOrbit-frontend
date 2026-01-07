@@ -22,7 +22,7 @@ const Signup = () => {
 
         setLoading(true);
         try {
-            const res = await axios.post("https://git-orbit-backend.vercel.app/signup", {
+                const res = await axios.post("https://gitorbit-backend.onrender.com/signup", {
                 email: email,
                 password: password,
                 username: username,

@@ -21,7 +21,7 @@ const Login = () => {
 
         setLoading(true);
         try {
-            const res = await axios.post("https://git-orbit-backend.vercel.app/login", {
+                const res = await axios.post("https://gitorbit-backend.onrender.com/login", {
                 email: email,
                 password: password,
             });

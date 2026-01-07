@@ -23,11 +23,11 @@ const RepoDetail = () => {
     useEffect(() => {
         const fetchRepoData = async () => {
             try {
-                const repoRes = await axios.get(`https://git-orbit-backend.vercel.app/repo/${id}`);
+                    const repoRes = await axios.get(`https://gitorbit-backend.onrender.com/repo/${id}`);
                 setRepo(repoRes.data);
                 
                 // Fetch issues
-                const issuesRes = await axios.get(`https://git-orbit-backend.vercel.app/issue/all/${id}`);
+                    const issuesRes = await axios.get(`https://gitorbit-backend.onrender.com/issue/all/${id}`);
                 setIssues(issuesRes.data);
                 setLoading(false);
             } catch (err) {
@@ -41,7 +41,7 @@ const RepoDetail = () => {
     const handleCreateIssue = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`https://git-orbit-backend.vercel.app/issue/create/${id}`, newIssue);
+                const res = await axios.post(`https://gitorbit-backend.onrender.com/issue/create/${id}`, newIssue);
             setIssues([...issues, res.data]);
             setNewIssue({ title: "", description: "" });
             toast.success("Issue created successfully");
@@ -60,11 +60,11 @@ const RepoDetail = () => {
         formData.append("path", ""); // Upload to root
 
         try {
-            await axios.post(`https://git-orbit-backend.vercel.app/repo/upload/${id}`, formData, {
+                await axios.post(`https://gitorbit-backend.onrender.com/repo/upload/${id}`, formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
             // Refresh repo data
-            const repoRes = await axios.get(`https://git-orbit-backend.vercel.app/repo/${id}`);
+                const repoRes = await axios.get(`https://gitorbit-backend.onrender.com/repo/${id}`);
             setRepo(repoRes.data);
             setRepo(repoRes.data);
             toast.success("File uploaded successfully");
@@ -85,7 +85,7 @@ const RepoDetail = () => {
         setFileContent("Loading...");
         setDownloadUrl("");
         try {
-            const res = await axios.get(`https://git-orbit-backend.vercel.app/repo/content/${id}?path=${file.path}`);
+                const res = await axios.get(`https://gitorbit-backend.onrender.com/repo/content/${id}?path=${file.path}`);
             setFileContent(res.data.content);
             setDownloadUrl(res.data.downloadUrl);
         } catch (err) {

@@ -28,7 +28,7 @@ const Profile = () => {
              
              try {
                  // Fetch user details
-                 const userRes = await axios.get(`https://git-orbit-backend.vercel.app/userProfile/${profileId}`);
+                     const userRes = await axios.get(`https://gitorbit-backend.onrender.com/userProfile/${profileId}`);
                  setUserDetails(userRes.data);
                  setEditBio(userRes.data.bio || "");
                  if (userRes.data.starRepos) {
@@ -41,7 +41,7 @@ const Profile = () => {
                  }
 
                  // Fetch user repos (Owned)
-                 const reposRes = await axios.get(`https://git-orbit-backend.vercel.app/repo/user/${profileId}`);
+                     const reposRes = await axios.get(`https://gitorbit-backend.onrender.com/repo/user/${profileId}`);
                  if (reposRes.data && reposRes.data.repositories) {
                      setRepos(reposRes.data.repositories);
                  }
@@ -56,7 +56,7 @@ const Profile = () => {
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put(`https://git-orbit-backend.vercel.app/updateProfile/${profileId}`, {
+                const res = await axios.put(`https://gitorbit-backend.onrender.com/updateProfile/${profileId}`, {
                 email: userDetails.email, 
                 bio: editBio
             });
@@ -72,7 +72,7 @@ const Profile = () => {
     const handleFollowToggle = async () => {
         try {
               if (isFollowing) {
-                  await axios.post(`https://git-orbit-backend.vercel.app/unfollow/${profileId}`, { currentUserID: currentUser });
+                      await axios.post(`https://gitorbit-backend.onrender.com/unfollow/${profileId}`, { currentUserID: currentUser });
                  setIsFollowing(false);
                  toast.success("Unfollowed user");
                  // Update local state for followers count
@@ -81,7 +81,7 @@ const Profile = () => {
                      followers: prev.followers.filter(f => f !== currentUser && f._id !== currentUser)
                  }));
               } else {
-                  await axios.post(`https://git-orbit-backend.vercel.app/follow/${profileId}`, { currentUserID: currentUser });
+                      await axios.post(`https://gitorbit-backend.onrender.com/follow/${profileId}`, { currentUserID: currentUser });
                  setIsFollowing(true);
                  toast.success("Followed user");
                  // Update local state for followers count

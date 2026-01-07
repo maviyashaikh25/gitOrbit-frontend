@@ -29,7 +29,7 @@ const CreateRepo = () => {
                 issues: []
             };
 
-            const response = await axios.post("https://git-orbit-backend.vercel.app/repo/create", payload);
+                const response = await axios.post("https://gitorbit-backend.onrender.com/repo/create", payload);
             
             if (response.status === 201) {
                 navigate(`/repo/${response.data.repositoryID}`);

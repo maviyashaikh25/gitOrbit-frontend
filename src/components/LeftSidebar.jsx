@@ -13,9 +13,9 @@ const LeftSidebar = () => {
     const fetchRepos = async () => {
       try {
         if (currentUser) {
-          const response = await axios.get(
-            `https://git-orbit-backend.vercel.app/repo/user/${currentUser}`
-          );
+            const response = await axios.get(
+              `https://gitorbit-backend.onrender.com/repo/user/${currentUser}`
+            );
           if (response.data.repositories) {
             setRepos(response.data.repositories);
           }
